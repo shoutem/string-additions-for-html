@@ -26,15 +26,15 @@
 #import "CGUtils.h"
 
 // standard options
-NSString *NSBaseURLDocumentOption = @"NSBaseURLDocumentOption";
-NSString *NSTextEncodingNameDocumentOption = @"NSTextEncodingNameDocumentOption";
-NSString *NSTextSizeMultiplierDocumentOption = @"NSTextSizeMultiplierDocumentOption";
+//NSString *NSBaseURLDocumentOption = @"NSBaseURLDocumentOption";
+//NSString *NSTextEncodingNameDocumentOption = @"NSTextEncodingNameDocumentOption";
+//NSString *NSTextSizeMultiplierDocumentOption = @"NSTextSizeMultiplierDocumentOption";
 
 // custom options
-NSString *DTMaxImageSize = @"DTMaxImageSize";
+//NSString *DTMaxImageSize = @"DTMaxImageSize";
 NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
-NSString *DTDefaultTextColor = @"DTDefaultTextColor";
-NSString *DTDefaultLinkColor = @"DTDefaultLinkColor";
+//NSString *DTDefaultTextColor = @"DTDefaultTextColor";
+//NSString *DTDefaultLinkColor = @"DTDefaultLinkColor";
 
 
 @implementation NSAttributedString (HTML)
