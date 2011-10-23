@@ -138,7 +138,7 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
     
     DTHTMLElement *defaultTag = [[[DTHTMLElement alloc] init] autorelease];
     defaultTag.fontDescriptor = defaultFontDescriptor;
-    defaultTag.paragraphStyle = defaultParagraphStyle;
+    defaultTag.elementParagraphStyle = defaultParagraphStyle;
     
     id defaultColor = [options objectForKey:DTDefaultTextColor];
     if (defaultColor)
@@ -208,11 +208,11 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
                     
                     if ([lowerDirection isEqualToString:@"ltr"])
                     {
-                        currentTag.paragraphStyle.writingDirection = kCTWritingDirectionLeftToRight;
+                        currentTag.elementParagraphStyle.writingDirection = kCTWritingDirectionLeftToRight;
                     }
                     else if ([lowerDirection isEqualToString:@"rtl"])
                     {
-                        currentTag.paragraphStyle.writingDirection = kCTWritingDirectionRightToLeft;
+                        currentTag.elementParagraphStyle.writingDirection = kCTWritingDirectionRightToLeft;
                     }
                 }
 			}
@@ -359,15 +359,15 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
 				if (tagOpen)
 				{
 					needsListItemStart = YES;
-                    currentTag.paragraphStyle.paragraphSpacing = 0;
+                    currentTag.elementParagraphStyle.paragraphSpacing = 0;
 					
-                    currentTag.paragraphStyle.headIndent = 25.0 * textScale;
-                    [currentTag.paragraphStyle addTabStopAtPosition:11.0 alignment:kCTLeftTextAlignment];
+                    currentTag.elementParagraphStyle.headIndent = 25.0 * textScale;
+                    [currentTag.elementParagraphStyle addTabStopAtPosition:11.0 alignment:kCTLeftTextAlignment];
 					
 #if ALLOW_IPHONE_SPECIAL_CASES
                     [currentTag.paragraphStyle addTabStopAtPosition:25.0 * textScale alignment:kCTLeftTextAlignment];
 #else
-                    [currentTag.paragraphStyle addTabStopAtPosition:36.0 * textScale alignment:kCTLeftTextAlignment];
+                    [currentTag.elementParagraphStyle addTabStopAtPosition:36.0 * textScale alignment:kCTLeftTextAlignment];
 #endif
 				}
 				else 
@@ -385,7 +385,7 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
 			{
 				if (tagOpen)
 				{
-                    currentTag.paragraphStyle.textAlignment = kCTLeftTextAlignment;
+                    currentTag.elementParagraphStyle.textAlignment = kCTLeftTextAlignment;
 				}
 #if ALLOW_IPHONE_SPECIAL_CASES
 				else 
@@ -396,14 +396,14 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
 			}
 			else if ([tagName isEqualToString:@"center"] && tagOpen)
 			{
-                currentTag.paragraphStyle.textAlignment = kCTCenterTextAlignment;
+                currentTag.elementParagraphStyle.textAlignment = kCTCenterTextAlignment;
 #if ALLOW_IPHONE_SPECIAL_CASES						
 				nextParagraphAdditionalSpaceBefore = defaultFontDescriptor.pointSize;
 #endif
 			}
 			else if ([tagName isEqualToString:@"right"] && tagOpen)
 			{
-                currentTag.paragraphStyle.textAlignment = kCTRightTextAlignment;
+                currentTag.elementParagraphStyle.textAlignment = kCTRightTextAlignment;
 #if ALLOW_IPHONE_SPECIAL_CASES						
 				nextParagraphAdditionalSpaceBefore = defaultFontDescriptor.pointSize;
 #endif
@@ -510,37 +510,37 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
 						{
 							case 1:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 16.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 16.0;
 								currentTag.fontDescriptor.pointSize = textScale * 24.0;
 								break;
 							}
 							case 2:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 14.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 14.0;
 								currentTag.fontDescriptor.pointSize = textScale * 18.0;
 								break;
 							}
 							case 3:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 14.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 14.0;
 								currentTag.fontDescriptor.pointSize = textScale * 14.0;
 								break;
 							}
 							case 4:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 15.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 15.0;
 								currentTag.fontDescriptor.pointSize = textScale * 12.0;
 								break;
 							}
 							case 5:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 16.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 16.0;
 								currentTag.fontDescriptor.pointSize = textScale * 10.0;
 								break;
 							}
 							case 6:
 							{
-                                currentTag.paragraphStyle.paragraphSpacing = 20.0;
+                                currentTag.elementParagraphStyle.paragraphSpacing = 20.0;
 								currentTag.fontDescriptor.pointSize = textScale * 9.0;
 								break;
 							}
@@ -597,7 +597,7 @@ NSString *DTDefaultFontFamily = @"DTDefaultFontFamily";
 			{
 				if (tagOpen)
 				{
-                    currentTag.paragraphStyle.paragraphSpacing = defaultFontDescriptor.pointSize;
+                    currentTag.elementParagraphStyle.paragraphSpacing = defaultFontDescriptor.pointSize;
 					
 					seenPreviousParagraph = YES;
 				}

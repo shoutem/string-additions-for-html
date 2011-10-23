@@ -26,7 +26,7 @@ typedef enum
 @interface DTHTMLElement : NSObject <NSCopying>
 {
     DTCoreTextFontDescriptor *fontDescriptor;
-    DTCoreTextParagraphStyle *paragraphStyle;
+    DTCoreTextParagraphStyle *elementParagraphStyle;
     DTTextAttachment *textAttachment;
     NSURL *link;
     
@@ -56,7 +56,7 @@ typedef enum
 }
 
 @property (nonatomic, copy) DTCoreTextFontDescriptor *fontDescriptor;
-@property (nonatomic, copy) DTCoreTextParagraphStyle *paragraphStyle;
+@property (nonatomic, copy) DTCoreTextParagraphStyle *elementParagraphStyle;
 @property (nonatomic, retain) DTTextAttachment *textAttachment;
 @property (nonatomic, copy) NSURL *link;
 

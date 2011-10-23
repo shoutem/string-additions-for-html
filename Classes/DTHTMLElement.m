@@ -41,7 +41,7 @@
 - (void)dealloc
 {
     [fontDescriptor release];
-    [paragraphStyle release];
+    [elementParagraphStyle release];
     [textAttachment release];
     
     [textColor release];
@@ -95,7 +95,7 @@
             CFRelease(font);
         }
         [tmpDict setObject:(id)font forKey:(id)kCTFontAttributeName];
-        [tmpDict setObject:(id)paragraphStyle forKey:(id)kCTParagraphStyleAttributeName];
+        [tmpDict setObject:(id)elementParagraphStyle forKey:(id)kCTParagraphStyleAttributeName];
     }
     
     // add hyperlink
@@ -133,7 +133,7 @@
 	}
     
     // add paragraph style
-    [tmpDict setObject:(id)[self.paragraphStyle createCTParagraphStyle] forKey:(id)kCTParagraphStyleAttributeName];
+    [tmpDict setObject:(id)[self.elementParagraphStyle createCTParagraphStyle] forKey:(id)kCTParagraphStyleAttributeName];
     
     // add shadow array if applicable
     if (shadows)
@@ -340,19 +340,19 @@
     {
         if ([alignment isEqualToString:@"left"])
         {
-            self.paragraphStyle.textAlignment = kCTLeftTextAlignment;
+            self.elementParagraphStyle.textAlignment = kCTLeftTextAlignment;
         }
         else if ([alignment isEqualToString:@"right"])
         {
-            self.paragraphStyle.textAlignment = kCTRightTextAlignment;
+            self.elementParagraphStyle.textAlignment = kCTRightTextAlignment;
         }
         else if ([alignment isEqualToString:@"center"])
         {
-            self.paragraphStyle.textAlignment = kCTCenterTextAlignment;
+            self.elementParagraphStyle.textAlignment = kCTCenterTextAlignment;
         }
         else if ([alignment isEqualToString:@"justify"])
         {
-            self.paragraphStyle.textAlignment = kCTJustifiedTextAlignment;
+            self.elementParagraphStyle.textAlignment = kCTJustifiedTextAlignment;
         }
         else if ([alignment isEqualToString:@"inherit"])
         {
@@ -371,7 +371,7 @@
     {
         if ([lineHeight isEqualToString:@"normal"])
         {
-            self.paragraphStyle.lineHeightMultiple = 0.0; // default
+            self.elementParagraphStyle.lineHeightMultiple = 0.0; // default
         }
         else if ([lineHeight isEqualToString:@"inherit"])
         {
@@ -379,11 +379,11 @@
         }
         else if ([lineHeight isNumeric])
         {
-            self.paragraphStyle.lineHeight = fontDescriptor.pointSize * (CGFloat)[lineHeight intValue];
+            self.elementParagraphStyle.lineHeight = fontDescriptor.pointSize * (CGFloat)[lineHeight intValue];
         }
         else // interpret as length
         {
-            self.paragraphStyle.lineHeight = [lineHeight pixelSizeOfCSSMeasureRelativeToCurrentTextSize:fontDescriptor.pointSize];
+            self.elementParagraphStyle.lineHeight = [lineHeight pixelSizeOfCSSMeasureRelativeToCurrentTextSize:fontDescriptor.pointSize];
         }
     }
 }
@@ -405,7 +405,7 @@
     DTHTMLElement *newObject = [[DTHTMLElement allocWithZone:zone] init];
     
     newObject.fontDescriptor = self.fontDescriptor; // copy
-    newObject.paragraphStyle = self.paragraphStyle; // copy
+    newObject.elementParagraphStyle = self.elementParagraphStyle; // copy
     
     newObject.underlineStyle = self.underlineStyle;
     newObject.tagContentInvisible = self.tagContentInvisible;
@@ -444,7 +444,7 @@
 }
 
 @synthesize fontDescriptor;
-@synthesize paragraphStyle;
+@synthesize elementParagraphStyle;
 @synthesize textColor;
 @synthesize backgroundColor;
 @synthesize tagName;
